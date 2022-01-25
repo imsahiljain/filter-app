@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Heading, Input } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 import "./App.css";
 import CardArea from "./components/card-area/CardArea";
 
@@ -16,17 +16,7 @@ class App extends Component {
         >
           Filter App
         </Heading>
-        <Container>
-          <Input
-            placeholder="Search here"
-            color="white"
-            size="lg"
-            isInvalid
-            errorBorderColor="gray.600"
-            mt="20"
-            fontFamily="Inter"
-          />
-        </Container>
+
         <CardArea />
       </>
     );

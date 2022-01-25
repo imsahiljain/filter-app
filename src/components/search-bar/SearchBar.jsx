@@ -1,10 +1,19 @@
-import React, { Component } from "react";
-import { Input } from "@chakra-ui/react";
+import React from "react";
+import { Container, Input } from "@chakra-ui/react";
 
-class SearchBar extends Component {
-  render() {
-    return <Input placeholder="Search for people" />;
-  }
+export default function SearchBar({ handleChange }) {
+  return (
+    <Container>
+      <Input
+        onChange={handleChange}
+        placeholder="Search here"
+        color="white"
+        size="lg"
+        isInvalid
+        errorBorderColor="gray.700"
+        mt="20"
+        fontFamily="Inter"
+      />
+    </Container>
+  );
 }
-
-export default SearchBar;
