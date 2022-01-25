@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { SimpleGrid } from "@chakra-ui/react";
 import Card from "../card/Card";
+import SearchBar from "../search-bar/SearchBar";
 
 class CardArea extends Component {
   constructor() {
     super();
     this.state = {
       people: [],
+      searchValue: "",
     };
   }
   componentDidMount() {
@@ -17,18 +19,31 @@ class CardArea extends Component {
       });
   }
   render() {
+    const { people, searchValue } = this.state;
+    const filteredPeople = people.filter((p) => {
+      return p.name.toLowerCase().includes(searchValue.toLowerCase());
+    });
+
     return (
-      <SimpleGrid columns={3} spacing={10} m="150">
-        {this.state.people.map((peopleList) => {
-          return (
-            <Card
-              id={peopleList.id}
-              name={peopleList.name}
-              email={peopleList.email}
-            />
-          );
-        })}
-      </SimpleGrid>
+      <>
+        <SearchBar
+          handleChange={(e) => {
+            this.setState({ searchValue: e.target.value });
+          }}
+        />
+        <SimpleGrid columns={3} spacing={10} m="150">
+          {filteredPeople.map((peopleList) => {
+            return (
+              <Card
+                key={peopleList.id}
+                id={peopleList.id}
+                name={peopleList.name}
+                email={peopleList.email}
+              />
+            );
+          })}
+        </SimpleGrid>
+      </>
     );
   }
 }
