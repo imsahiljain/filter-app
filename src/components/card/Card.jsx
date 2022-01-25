@@ -9,7 +9,7 @@ class Card extends Component {
         boxShadow="2xl"
         rounded="md"
         border="1px"
-        borderColor="gray.200"
+        borderColor="gray.700"
         width="auto"
         height="auto"
       >
@@ -22,7 +22,7 @@ class Card extends Component {
             alignItems="center"
             margin="auto"
           />
-          <Box p="6" textAlign="center" fontFamily="Inter">
+          <Box p="6" textAlign="center" fontFamily="Inter" color="white">
             <Box
               mt="1"
               fontWeight="semibold"
