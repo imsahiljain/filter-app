@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Heading } from "@chakra-ui/react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      people: [],
+    };
+  }
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ people: data });
+      });
+  }
+  render() {
+    return (
+      <div>
+        <Heading className="heading">Filter App</Heading>
+        {this.state.people.map((peopleList) => {
+          return (
+            <Heading className="heading" size="md" key="{peopleList.id}">
+              {peopleList.name}
+            </Heading>
+          );
+        })}
+      </div>
+    );
+  }
 }
 
 export default App;
